@@ -1,0 +1,4 @@
+name: EnchantCraft
+version: '1.0'
+main: com.mills.enchantCraft.Main
+api-version: '1.21'
