@@ -1,17 +1,19 @@
 package com.mills.enchantCraft;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
 
+    private ItemsManager itemsManager;
+
     @Override
     public void onEnable() {
-        // Plugin startup logic
 
-    }
+        itemsManager = new ItemsManager();
+        itemsManager.setupRecipes();
 
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+        Bukkit.getPluginManager().registerEvents(new GUIListener(itemsManager), this);
+        getCommand("ecraft").setExecutor(new EcraftCommand());
     }
 }

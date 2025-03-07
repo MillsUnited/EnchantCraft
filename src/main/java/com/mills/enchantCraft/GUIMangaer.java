@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GUIManger {
+public class GUIMangaer {
 
     public static Inventory openGUI(Player player) {
         Inventory ecraft = Bukkit.createInventory(player, 45, "Enchant Craft");
@@ -170,10 +170,16 @@ public class GUIManger {
             recipeInv.setItem(gridSlots[i], ingredient != null ? ingredient : new ItemStack(Material.AIR));
         }
 
-        recipeInv.setItem(13, resultItem.clone());
+        recipeInv.setItem(24, resultItem.clone());
+
+        ItemStack back = new ItemStack(Material.BARRIER);
+        ItemMeta backMeta = back.getItemMeta();
+        backMeta.setDisplayName(ChatColor.DARK_RED.toString() + ChatColor.RED + "Back");
+        back.setItemMeta(backMeta);
+        recipeInv.setItem(49, back);
 
         for (int i = 0; i < recipeInv.getSize(); i++) {
-            if (!contains(gridSlots, i) && i != 13) {
+            if (!contains(gridSlots, i) && i != 24 && i != 49) {
                 recipeInv.setItem(i, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
             }
         }
